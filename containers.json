@@ -3,7 +3,7 @@
   "default_version": "MUST_SPECIFY",
   "containers": {
  "doc-document-backend": {
-      "image": "quay.io/rocketlawyer/doc-document-backend:2018.03.20-run2-b557e0a",
+      "image": "quay.io/rocketlawyer/doc-document-backend:2018.03.15-run2-f15457d",
       "github": "doc-document-backend",
       "flyway": "d1392a40044bfc32856c79fdaf9a95b402899745"
     },
@@ -43,10 +43,5 @@
       "repository": "releases",
       "version": "0.3.38"
     }
-  },
-  "npm_assets": {
-    "rl-document-output": {
-      "version": "0.0.56"
-    }      
   }
 }
