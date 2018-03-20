@@ -1,1 +1,52 @@
-container_id:test
+{
+  "id": "release-overrides",
+  "default_version": "MUST_SPECIFY",
+  "containers": {
+ "doc-document-backend": {
+      "image": "quay.io/rocketlawyer/doc-document-backend:2018.03.20-run2-b557e0a",
+      "github": "doc-document-backend",
+      "flyway": "d1392a40044bfc32856c79fdaf9a95b402899745"
+    },
+ "doc-template-backend": {
+      "github": "doc-template-backend",
+      "image": "quay.io/rocketlawyer/doc-template-backend:2018.03.13-run5-2e8dcec"
+    },
+    "sign-service": {
+      "github": "rocketsign-backend",
+      "deployment": "1521203050250",
+      "image": "quay.io/rocketlawyer/sign-service:1.2.0-20180316.122154-5107255",
+      "flyway": "267d814ab727ce6a8395f291e5f6da7b36397a95"
+    },
+    "nibbler": {
+      "image": "quay.io/rocketlawyer/nibbler:1.0.9-20180319222147891"
+    }
+  },
+  "npm_assets": {
+    "rl-global-app": {
+      "version": "latest"
+    },
+    "rl-global-caffeine": {
+      "version": "test"
+    }
+  },
+  "users-backend": {
+    "github": "users-backend",
+    "image": "quay.io/rocketlawyer/users-backend:2018.03.12-run1-c386d19",
+    "flyway": "7755607fdc561533e0eaa76aa576acc0eb799e2a"
+  },
+  "webapps": {
+    "EU-CMS-cms": {
+      "repository": "releases",
+      "version": "0.3.38"
+    },
+    "EU-CMS-site": {
+      "repository": "releases",
+      "version": "0.3.38"
+    }
+  },
+  "npm_assets": {
+    "rl-document-output": {
+      "version": "0.0.56"
+    }      
+  }
+}
