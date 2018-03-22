@@ -4,7 +4,7 @@
   "containers": {
     "email-service": {
       "deployment": "1520591328882",
-      "image": "quay.io/rocketlawyer/email-service:0.10.0-20180309.105817-b7c9d0d",
+      "image": "quay.io/rocketlawyer/email-service:0.10.0-20180314.190851-b7c9d0d",
       "provider.email.sfmc.token.host": "auth.exacttargetapis.com"
     },
     "doc-document-backend": {
