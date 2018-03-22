@@ -1,47 +1,239 @@
 {
   "id": "release-overrides",
-  "default_version": "MUST_SPECIFY",
+  "default_version": "LATEST",
   "containers": {
- "doc-document-backend": {
-      "image": "quay.io/rocketlawyer/doc-document-backend:2018.03.15-run2-f15457d",
-      "github": "doc-document-backend",
-      "flyway": "d1392a40044bfc32856c79fdaf9a95b402899745"
+    "email-service": {
+      "deployment": "1520591328882",
+      "image": "quay.io/rocketlawyer/email-service:0.10.0-20180309.105817-b7c9d0d",
+      "provider.email.sfmc.token.host":"auth.exacttargetapis.com"
     },
- "doc-template-backend": {
-      "github": "doc-template-backend",
-      "image": "quay.io/rocketlawyer/doc-template-backend:2018.03.13-run5-2e8dcec"
+    "doc-document-backend": {
+      "image": "quay.io/rocketlawyer/doc-document-backend:2018.01.22-run2-4ac3119"
+    },
+    "doc-interview-backend": {
+      "image": "quay.io/rocketlawyer/doc-interview-backend:2018.01.17-run1-a4600b7",
+      "github": "doc-interview-backend",
+      "flyway": "a6bf2708769500f11673eb7adf29f6db45f432ce"
+    },
+    "doc-template-backend": {
+      "image": "quay.io/rocketlawyer/doc-template-backend:2018.01.17-run2-1213289",
+      "flyway": "8beef0579be067dd407e9b2f134a9359495f03a3",
+      "github": "doc-template-backend"
+    },
+    "doc-processing-service": {
+      "github": "doc-processing-backend",
+      "deployment": "1520591328882",
+      "image": "quay.io/rocketlawyer/doc-processing-service:0.12.14-20180309.101924-c634e34",
+      "flyway": "1deeaf3dee4f7442ccb5be9acaf1532354fb739c"
     },
     "sign-service": {
       "github": "rocketsign-backend",
-      "deployment": "1521203050250",
-      "image": "quay.io/rocketlawyer/sign-service:1.2.0-20180316.122154-5107255",
-      "flyway": "267d814ab727ce6a8395f291e5f6da7b36397a95"
+      "deployment": "1520591328882",
+      "image": "quay.io/rocketlawyer/sign-service:1.1.44-20180309.102603-f776ee4",
+      "flyway": "7862d4bf2be1b9a3f45a75905b8c72e2aed00190"
+    },
+    "users": {
+      "image": "quay.io/rocketlawyer/users-backend:2017.03.30-run1-7ddddc8"
     },
     "nibbler": {
-      "image": "quay.io/rocketlawyer/nibbler:1.0.9-20180319222147891"
-    }
-  },
-  "npm_assets": {
-    "rl-global-app": {
-      "version": "latest"
+      "image": "quay.io/rocketlawyer/nibbler:1.0.6-20170711222252078"
     },
-    "rl-global-caffeine": {
-      "version": "test"
+    "request-management": {
+      "image": "quay.io/rocketlawyer/request-management-backend:2017.03.31-run2-0950dbd"
+    },
+    "lithium-backend": {
+      "image": "quay.io/rocketlawyer/lithium-backend:2017.03.20-run1-898508a"
     }
-  },
-  "users-backend": {
-    "github": "users-backend",
-    "image": "quay.io/rocketlawyer/users-backend:2018.03.12-run1-c386d19",
-    "flyway": "7755607fdc561533e0eaa76aa576acc0eb799e2a"
   },
   "webapps": {
     "EU-CMS-cms": {
-      "repository": "releases",
-      "version": "0.3.38"
+      "repository": "snapshots",
+      "version": "LATEST"
     },
     "EU-CMS-site": {
+      "repository": "snapshots",
+      "version": "LATEST",
+      "context": "/ROOT"
+    },
+    "killbill-profiles-killbill": {
+      "version": "0.18.7",
+      "context": "/ROOT",
       "repository": "releases",
-      "version": "0.3.38"
+      "group": "/org/kill-bill/billing",
+      "github": "RL-Killbill",
+      "tomcat_port": 8080,
+      "sshd_port": 8099,
+      "jmx_port": 8084,
+      "type": "killbill",
+      "monitor": false,
+      "requires_restart": true,
+      "monitor_http_path": "1.0/ping",
+      "monitor_http_match": "pong"
+    },
+    "rl-catalog-admin": {
+      "context": "/catalog-admin",
+      "repository": "releases",
+      "group": "/com/rocketlawyer/catalog/eu",
+      "github": "RL-Catalog",
+      "flyway": "7d24d8a2770659bebdd875568c31416eb070732a",
+      "type": "cms",
+      "monitor": false,
+      "version": "0.6.3"
+    },
+    "purchaseorder-admin": {
+      "context": "/purchaseorder-admin",
+      "repository": "releases",
+      "group": "/com/rocketlawyer/purchaseorder/eu",
+      "github": "RL-PurchaseOrders",
+      "flyway": "42f89b2c39453563e461347bff2f75ad3cdcb0e1",
+      "type": "cms",
+      "monitor": false,
+      "version": "2.0.2"
+    },
+    "assets-admin": {
+      "context": "/assets-admin",
+      "repository": "releases",
+      "group": "/com/rocketlawyer/assets/eu",
+      "github": "AccountAssets",
+      "flyway": "c7bf85d8d59b87f3a055ab14eb60e499c097b592",
+      "type": "cms",
+      "monitor": false,
+      "version": "2.0.6"
+    },
+    "rl-ecommerce-site": {
+      "context": "/ecommerce-site",
+      "repository": "releases",
+      "group": "/com/rocketlawyer/ecommerce/eu",
+      "github": "RL-ECommerce",
+      "type": "cms",
+      "monitor": false,
+      "version": "0.7.20"
+    },
+    "rl-billing-admin": {
+      "context": "/billing-admin",
+      "repository": "releases",
+      "group": "/com/rocketlawyer/billing/eu",
+      "github": "RL-Billing",
+      "type": "cms",
+      "monitor": false,
+      "version": "0.3.29"
+    }
+  },
+  "npm_assets": {
+    "rl-interviewauthoring": {
+      "version": "0.8.32-cc8bf5d",
+      "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    },
+    "rl-interview-site": {
+      "version": "0.0.32"
+    },
+    "rl-interview": {
+      "version": "0.0.15"
+    },
+    "rl-translation-manager": {
+       "uri": ["/api/v1/translations", "/translation-manager"],
+       "type": "tools",
+       "service": true,
+       "version": "0.0.49"
+    },
+    "rl-global-internaltoolslogin": {
+       "uri": "/login",
+       "type": "tools",
+       "version": "0.1.1",
+       "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    },
+    "rl-global-caffeine": {
+       "version": "0.3.4-2"
+    },
+    "rl-global-maestro": {
+       "uri": "/maestro",
+       "type": "tools",
+       "version": "0.1.13-5",
+       "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    },
+    "rl-global-app": {
+      "version": "1.3.39-H7a58563",
+       "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    },
+    "rl-sign-app": {
+      "uri": "/sign",
+      "type": "cms",
+      "version": "1.3.13-H035d148",
+      "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    },
+    "rl-document-output": {
+      "version": "0.0.37",
+       "url": "https://rocketlawyer.jfrog.io/rocketlawyer/api/npm/npm/"
+    }
+  },
+  "plugins": {
+    "killbill-catalog-scala-plugin_2.11": {
+      "group": "/com/rocketlawyer/ecommerce/plugins/eu",
+      "github": "RL-Killbill-catalog-plugin",
+      "repository": "releases",
+      "version": "0.1.1"
+    },
+    "killbill-payment-plugin": {
+      "group": "com.rocketlawyer.killbill.payments.eu",
+      "github": "RL-KillBill-Payments",
+      "repository": "releases",
+      "version": "2.0.3"
+    },
+    "killbill-payment-config": {
+      "group": "com.rocketlawyer.killbill.payments.eu",
+      "github": "RL-KillBill-Payments",
+      "repository": "releases",
+      "version": "2.0.3",
+      "link_dir": "/opt/resources/killbill/platform",
+      "download_dir": "/opt/releases/current/osgi"
+    },
+    "killbill-payment-dao": {
+      "group": "com.rocketlawyer.killbill.payments.eu",
+      "github": "RL-KillBill-Payments",
+      "repository": "releases",
+      "version": "2.0.3",
+      "link_dir": "/opt/resources/killbill/platform",
+      "download_dir": "/opt/releases/current/osgi"
+    },
+    "payments-java-client-api": {
+      "group": "com.rocketlawyer.payments.eu",
+      "github": "RL-Payments-Java-Client",
+      "repository": "releases",
+      "version": "2.0.1",
+      "link_dir": "/opt/resources/killbill/platform",
+      "download_dir": "/opt/releases/current/osgi"
+    },
+    "payments-java-client": {
+      "group": "com.rocketlawyer.payments.eu",
+      "github": "RL-Payments-Java-Client",
+      "repository": "releases",
+      "version": "2.0.1",
+      "link_dir": "/opt/resources/killbill/platform",
+      "download_dir": "/opt/releases/current/osgi"
+    },
+    "notifications-plugin": {
+      "group": "/org/kill-bill/billing",
+      "github": "RL-Killbill-plugins",
+      "repository": "releases",
+      "version": "0.0.52"
+    },
+    "killbill-email-notification-java-plugin": {
+      "group": "/org/kill-bill/billing",
+      "github": "RL-Killbill-plugins",
+      "repository": "releases",
+      "version": "0.0.52"
+    }
+  },
+  "services": {
+    "payments-service": {
+      "listen_port": 8100,
+      "version": "3.1.6-SNAPSHOT",
+      "repository": "snapshots",
+      "group": "/com/rocketlawyer/payments",
+      "health_uri": "health",
+      "health_match": "UP",
+      "jvm_options": "-Dspring.profiles.active=us -Drpc.websocket.timeout=90",
+      "type": "tools"
     }
   }
 }
