@@ -8,7 +8,7 @@
       "provider.email.sfmc.token.host": "auth.exacttargetapis.com"
     },
     "doc-document-backend": {
-      "image": "quay.io/rocketlawyer/doc-document-backend:release-OVERRIDE1"
+      "image": "quay.io/rocketlawyer/doc-document-backend:release-OVERRIDE_OVERRIDE"
     },
     "doc-interview-backend": {
       "image": "quay.io/rocketlawyer/doc-interview-backend:2018.01.17-run1-a4600b7",
